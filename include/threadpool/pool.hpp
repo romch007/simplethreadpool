@@ -13,7 +13,15 @@
 namespace threadpool {
     class THREADPOOL_API pool {
     public:
+        /**
+         * Construct a thread pool with a number of worker corresponding to hardware max threads
+         */
         pool();
+
+        /**
+         * Construct a thread pool
+         * @param max_threads Max workers in the thread pool
+         */
         explicit pool(unsigned int max_threads);
         ~pool();
 
@@ -23,11 +31,32 @@ namespace threadpool {
         pool& operator=(const pool&) = delete;
         pool& operator=(pool&&) noexcept = delete;
 
+        /**
+         * Get the max number of workers
+         * @return The max number of workers
+         */
         [[nodiscard]] unsigned int max_workers() const;
 
+        /**
+         * Start the thread pool
+         */
         void start();
+
+        /**
+         * Push a new job to the thread pool
+         * @param job The new job
+         */
         void push(const std::function<void()>& job);
+
+        /**
+         * Check if the thread pool is currently running tasks
+         * @return If the thread pool is busy
+         */
         bool busy();
+
+        /**
+         * Stop the thread pool
+         */
         void stop();
 
     private:
