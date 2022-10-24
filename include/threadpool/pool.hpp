@@ -34,7 +34,7 @@ namespace threadpool {
         void thread_loop();
 
         unsigned int m_max_workers;
-        bool should_terminate = false;
+        bool m_should_terminate = false;
         std::mutex m_queue_mutex;
         std::condition_variable m_mutex_condition;
         std::vector<std::thread> m_threads;

@@ -31,9 +31,9 @@ namespace threadpool {
             {
                 std::unique_lock<std::mutex> lock(m_queue_mutex);
                 m_mutex_condition.wait(lock, [this] {
-                    return !m_jobs.empty() || should_terminate;
+                    return !m_jobs.empty() || m_should_terminate;
                 });
-                if (should_terminate) return;
+                if (m_should_terminate) return;
                 job = m_jobs.front();
                 m_jobs.pop();
             }
@@ -53,7 +53,7 @@ namespace threadpool {
     void pool::stop() {
         {
             std::unique_lock<std::mutex> lock(m_queue_mutex);
-            should_terminate = true;
+            m_should_terminate = true;
         }
         m_mutex_condition.notify_all();
         for (auto& active_thread : m_threads)
