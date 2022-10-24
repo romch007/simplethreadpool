@@ -60,6 +60,4 @@ namespace threadpool {
             active_thread.join();
         m_threads.clear();
     }
-
-
 }
