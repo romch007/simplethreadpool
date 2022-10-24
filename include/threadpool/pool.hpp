@@ -8,9 +8,10 @@
 #include <functional>
 #include <mutex>
 #include <condition_variable>
+#include <threadpool/config.hpp>
 
 namespace threadpool {
-    class pool {
+    class THREADPOOL_API pool {
     public:
         pool();
         explicit pool(unsigned int max_threads);
