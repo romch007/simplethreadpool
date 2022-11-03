@@ -20,6 +20,10 @@ target("threadpool")
     add_headerfiles("include/(threadpool/*.hpp)")
     add_includedirs("include", { public = true })
 
+    if is_plat("linux") then
+        add_syslinks("pthread")
+    end
+
 
     on_load(function (target)
         if target:kind() == "static" then
