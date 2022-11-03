@@ -1,4 +1,4 @@
-name: Linux
+name: Compilation
 
 on:
   push:
@@ -9,7 +9,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
         kind: [static, shared]
     
     runs-on: ${{ matrix.os }}
@@ -22,10 +22,16 @@ jobs:
         env:
           XMAKE_ROOT: y
         run: |
-          xmake config -m release -k ${{ matrix.kind }}
+          xmake config -m release -k ${{ matrix.kind }} --tests=y -y
       - name: Build
         env:
           XMAKE_ROOT: y
         run: |
           xmake -j$(nproc)
+      - name: Tests
+        env:
+          XMAKE_ROOT: y
+        run: |
+          xmake run tests
+
 
