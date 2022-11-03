@@ -27,7 +27,7 @@ jobs:
         env:
           XMAKE_ROOT: y
         run: |
-          xmake -j$(nproc)
+          xmake build
       - name: Tests
         env:
           XMAKE_ROOT: y
