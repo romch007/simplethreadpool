@@ -1,0 +1,31 @@
+name: Linux
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        kind: [static, shared]
+    
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v1
+      - uses: xmake-io/github-action-setup-xmake@v1
+        with:
+          xmake-version: branch@dev
+      - name: Configuration
+        env:
+          XMAKE_ROOT: y
+        run: |
+          xmake config -m release -k ${{ matrix.kind }}
+      - name: Build
+        env:
+          XMAKE_ROOT: y
+        run: |
+          xmake -j$(nproc)
+
