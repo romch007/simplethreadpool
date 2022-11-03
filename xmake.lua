@@ -2,6 +2,8 @@ set_project("threadpool")
 
 set_version("1.0.0")
 
+set_languages("cxx20")
+
 add_rules("mode.debug", "mode.release", "mode.valgrind")
 
 set_rundir(".")
