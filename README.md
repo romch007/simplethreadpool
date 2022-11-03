@@ -25,7 +25,7 @@ int main() {
     
     p.start();
     
-    while (p.busy()) {} // wait for all the jobs to be finished
+    while (p.busy()); // wait for all the jobs to be finished
     
     std::cout << counter << std::endl;
 }
