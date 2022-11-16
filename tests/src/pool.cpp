@@ -1,8 +1,8 @@
 #include <catch2/catch_test_macros.hpp>
-#include <threadpool/pool.hpp>
+#include <simplethreadpool/pool.hpp>
 
 TEST_CASE("[POOL]") {
-    threadpool::pool pool;
+    simplethreadpool::pool pool;
     unsigned int steps = 5;
     unsigned int counter = 0;
     std::mutex counter_mutex;

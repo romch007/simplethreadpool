@@ -1,6 +1,6 @@
-#include <threadpool/pool.hpp>
+#include <simplethreadpool/pool.hpp>
 
-namespace threadpool {
+namespace simplethreadpool {
     pool::pool() : pool(std::thread::hardware_concurrency()) {}
 
     pool::pool(unsigned int max_threads) : m_max_workers(max_threads) {}

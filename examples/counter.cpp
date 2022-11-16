@@ -1,8 +1,8 @@
-#include <threadpool/pool.hpp>
+#include <simplethreadpool/pool.hpp>
 #include <iostream>
 
 int main() {
-    threadpool::pool p;
+    simplethreadpool::pool p;
     int counter = 0;
     std::mutex counter_mutex;
 

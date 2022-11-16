@@ -1,4 +1,4 @@
-set_project("threadpool")
+set_project("simplethreadpool")
 
 set_version("1.0.0")
 
@@ -12,12 +12,12 @@ set_targetdir("./build/$(plat)_$(arch)_$(mode)")
 includes("tests/xmake.lua")
 includes("examples/xmake.lua")
 
-target("threadpool")
+target("simplethreadpool")
     set_kind("$(kind)")
     set_group("Librairies")
 
     add_files("src/*.cpp")
-    add_headerfiles("include/(threadpool/*.hpp)")
+    add_headerfiles("include/(simplethreadpool/*.hpp)")
     add_includedirs("include", { public = true })
 
     if is_plat("linux") then
@@ -27,7 +27,7 @@ target("threadpool")
 
     on_load(function (target)
         if target:kind() == "static" then
-            target:add("defines", "THREADPOOL_STATIC", { public = true })
+            target:add("defines", "SIMPLETHREADPOOL_STATIC", { public = true })
         end
     end)
 

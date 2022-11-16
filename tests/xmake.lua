@@ -13,6 +13,6 @@ if has_config("tests") then
         add_files("main.cpp")
         add_files("src/**.cpp")
 
-        add_deps("threadpool")
+        add_deps("simplethreadpool")
         add_packages("catch2")
 end

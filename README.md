@@ -1,4 +1,4 @@
-# threadpool library
+# simplethreadpool library
 
 Simple C++ thread pool library
 
@@ -7,10 +7,10 @@ Simple C++ thread pool library
 ## Usage
 
 ```cpp
-#include <threadpool/pool.hpp>
+#include <simplethreadpool/pool.hpp>
 
 int main() {
-    threadpool::pool p;
+    simplethreadpool::pool p;
     
     int counter = 0;
     std::mutex counter_mutex;

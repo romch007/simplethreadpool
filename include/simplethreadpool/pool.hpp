@@ -1,17 +1,17 @@
 #pragma once
 
-#ifndef THREADPOOL_POOL_HPP
-#define THREADPOOL_POOL_HPP
+#ifndef SIMPLETHREADPOOL_POOL_HPP
+#define SIMPLETHREADPOOL_POOL_HPP
 
 #include <queue>
 #include <thread>
 #include <functional>
 #include <mutex>
 #include <condition_variable>
-#include <threadpool/config.hpp>
+#include <simplethreadpool/config.hpp>
 
-namespace threadpool {
-    class THREADPOOL_API pool {
+namespace simplethreadpool {
+    class SIMPLETHREADPOOL_API pool {
     public:
         /**
          * Construct a thread pool with a number of worker corresponding to hardware max threads

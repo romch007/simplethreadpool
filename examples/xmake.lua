@@ -10,5 +10,5 @@ if has_config("examples") then
         set_group("Examples")
         add_files("counter.cpp")
 
-        add_deps("threadpool")
+        add_deps("simplethreadpool")
 end
