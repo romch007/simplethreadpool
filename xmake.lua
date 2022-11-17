@@ -9,6 +9,10 @@ add_rules("mode.debug", "mode.release", "mode.valgrind")
 set_rundir(".")
 set_targetdir("./build/$(plat)_$(arch)_$(mode)")
 
+if is_plat("wasm") then
+    add_defines("__WASM__")
+end
+
 includes("tests/xmake.lua")
 includes("examples/xmake.lua")
 
@@ -23,7 +27,6 @@ target("simplethreadpool")
     if is_plat("linux") then
         add_syslinks("pthread")
     end
-
 
     on_load(function (target)
         if target:kind() == "static" then

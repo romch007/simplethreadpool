@@ -15,6 +15,9 @@
 #elif defined(__FreeBSD__)
 #define SIMPLETHREADPOOL_EXPORT __attribute__((visibility("default")))
 #define SIMPLETHREADPOOL_IMPORT __attribute__((visibility("default")))
+#elif defined(__WASM__)
+#define SIMPLETHREADPOOL_EXPORT
+#define SIMPLETHREADPOOL_IMPORT
 #else
 #error "Platform not supported"
 #endif
