@@ -35,7 +35,7 @@ target("simplethreadpool")
     add_headerfiles("include/(simplethreadpool/*.hpp)")
     add_includedirs("include", { public = true })
 
-    if is_plat("linux") then
+    if is_plat("linux", "bsd") then
         add_syslinks("pthread")
     end
 
