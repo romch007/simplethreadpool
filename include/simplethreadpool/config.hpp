@@ -12,7 +12,10 @@
 #elif defined(__linux__)
   #define SIMPLETHREADPOOL_EXPORT __attribute__((visibility("default")))
   #define SIMPLETHREADPOOL_IMPORT __attribute__((visibility("default")))
-#elif defined(__unix__) || !defined(__APPLE__) && defined(__MACH__)
+#elif defined(__APPLE__)
+  #define SIMPLETHREADPOOL_EXPORT __attribute__((visibility("default")))
+  #define SIMPLETHREADPOOL_IMPORT __attribute__((visibility("default")))
+#elif defined(__unix__)
   #include <sys/param.h>
   #if defined(BSD)
     #define SIMPLETHREADPOOL_EXPORT __attribute__((visibility("default")))
