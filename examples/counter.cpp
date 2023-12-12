@@ -1,21 +1,20 @@
 #include <iostream>
+#include <atomic>
 #include <simplethreadpool/pool.hpp>
 
 int main() {
   simplethreadpool::pool p;
-  int counter = 0;
-  std::mutex counter_mutex;
+  std::atomic<int> counter = 0;
 
-  for (int i = 0; i < 100; i++)
+  for (int i = 0; i < 100; i++) {
     p.push([&] {
-      std::unique_lock<std::mutex> lock(counter_mutex);
-      counter++;
+        counter++;
     });
+  }
 
   p.start();
 
-  while (p.busy()) {
-  }
+  while (p.busy());
 
   std::cout << counter << std::endl;
 }
